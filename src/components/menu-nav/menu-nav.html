@@ -1,0 +1,12 @@
+<!-- Generated template for the MenuNav component -->
+
+<ion-content>
+  <ion-list>
+    <button menuClose ion-item (click)="selectFilter(null)">
+      All
+    </button>
+    <button menuClose *ngFor="let category of categories" ion-item (click)="selectFilter(category)">
+      {{ category }}
+    </button>
+  </ion-list>
+</ion-content>

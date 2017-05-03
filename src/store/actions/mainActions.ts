@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 01-05-2017
+ * @Last modified time: 02-05-2017
  */
 
 import {Injectable} from '@angular/core';
@@ -18,6 +18,10 @@ export class MainActions {
   static GET_DATAS_ARRAY:string = 'GET_DATAS_ARRAY'
   static GET_DATAS_ARRAY_SUCCESS:string = 'GET_DATAS_ARRAY_SUCCESS'
   static GET_DATAS_ARRAY_FAILED:string = 'GET_DATAS_ARRAY_FAILED'
+
+  static FILTER_DATAS_ARRAY:string = 'FILTER_DATAS_ARRAY'
+  static FILTER_DATAS_ARRAY_SUCCESS:string = 'FILTER_DATAS_ARRAY_SUCCESS'
+  static FILTER_DATAS_ARRAY_FAILED:string = 'FILTER_DATAS_ARRAY_FAILED'
 
   static GET_DATA_OBJECT:string = 'GET_DATA_OBJECT'
 
@@ -80,6 +84,13 @@ export class MainActions {
     return  <Action>{
         type: MainActions.CREATE_DATA,
         payload: _query
+    }
+  }
+
+  datasFilterBy(_filter:any):Action{
+    return <Action>{
+        type: MainActions.FILTER_DATAS_ARRAY,
+        payload: _filter
     }
   }
 

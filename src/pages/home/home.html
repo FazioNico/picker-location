@@ -1,19 +1,28 @@
 <ion-header>
   <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
       Picker Location
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h1>Hello {{ (storeInfo | async)?.currentUser?.email }}</h1>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-  <div center>
-    <button ion-button (click)="goPage('ItemsPage')">go items</button>
-    <button ion-button color="danger" (click)="onLogout()">logout</button>
-  </div>
+<ion-content>
+
+  <div #map class="gMap"></div>
+<!--
+  <ion-list>
+    <ion-item-sliding #slidingItem *ngFor="let item of (storeDatas | async)">
+      <ion-item>
+          <ion-label>{{ item.description }}</ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list> -->
+
+  <ion-fab right bottom>
+    <button  ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  
 </ion-content>

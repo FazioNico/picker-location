@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 19-04-2017
+ * @Last modified time: 02-05-2017
  */
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,9 +18,13 @@ import { EnvironmentsModule } from "./environment/environment.module";
 // Import ngrx Tools
 import { NgRxStoreModule } from "../store/store.module";
 
-// import App & RootPage
+// import App & RootPage & components
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { MenuNavModule } from "../components/menu-nav/menu-nav.module";
+
+// Import Root Providers
+import { GoogleMapService } from '../providers/google-map-service/google-map-service';
 
 const ionicAppConfig:Object = {
   tabsPlacement: 'bottom',
@@ -36,7 +40,8 @@ const ionicAppConfig:Object = {
     BrowserModule,
     IonicModule.forRoot(MyApp, ionicAppConfig),
     NgRxStoreModule,
-    EnvironmentsModule
+    EnvironmentsModule,
+    MenuNavModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,7 +51,8 @@ const ionicAppConfig:Object = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GoogleMapService
   ]
 })
 export class AppModule {}
