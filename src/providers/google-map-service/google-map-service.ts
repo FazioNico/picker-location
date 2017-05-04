@@ -3,7 +3,7 @@
 * @Date:   06-02-2017
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 03-05-2017
+ * @Last modified time: 04-05-2017
 */
 
 import { Injectable, EventEmitter } from '@angular/core';
@@ -12,6 +12,242 @@ import { GMAP_API_KEY } from './apikey-config';
 
 declare var google;
 
+const GMAP_STYLE = [
+  {
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.locality",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.neighborhood",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.province",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.attraction",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.government",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.medical",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.place_of_worship",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.place_of_worship",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.school",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.sports_complex",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  }
+];
 /*
   Generated class for the GoogleMapService provider.
 
@@ -117,13 +353,14 @@ export class GoogleMapService extends EventEmitter<any> {
   setupMap(coords,mapElement:ElementRef):void{
     this.map = new google.maps.Map(mapElement.nativeElement, {
       center: {lat: coords.lat, lng: coords.lng},
-      zoom: 11,
+      zoom: 13,
       scrollwheel: false,
       fullscreenControl: false,
       mapTypeControl: false,
       streetViewControl: false,
       rotateControl: false,
-      scaleControl: false
+      scaleControl: false,
+      styles: GMAP_STYLE
     });
     mapElement.nativeElement.style.height = `${window.innerHeight}px`;
     this.gmapEnable = true;
@@ -136,7 +373,7 @@ export class GoogleMapService extends EventEmitter<any> {
       fillColor: '#1998f7',
       fillOpacity: 1,
       scale: 1,
-      strokeColor: 'gold',
+      strokeColor: '#1998f7',
       strokeWeight: 0
     };
 
@@ -147,6 +384,14 @@ export class GoogleMapService extends EventEmitter<any> {
     this.gpsUserMarker = new google.maps.Marker({position: new google.maps.LatLng(position.lat, position.lng), map: this.map, title: "user-position", icon:pin});
     this.bounds.extend(new google.maps.LatLng(position.lat, position.lng));
     this.markersArray.push(this.gpsUserMarker);
+
+
+    window.setInterval(()=> {
+      // TODO: add effect transition svg
+      var icon = this.gpsUserMarker.icon;
+      (icon.strokeWeight === 0)? icon.strokeWeight = 3 : icon.strokeWeight = 0
+      this.gpsUserMarker.setIcon(icon)
+    }, 1000);
   }
 
   // add marker to map and in array
@@ -190,6 +435,7 @@ export class GoogleMapService extends EventEmitter<any> {
         title: item._id,
         animation: google.maps.Animation.DROP,
         category: item.category,
+        description: item.description,
         icon: { url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg(color)) },
         //zIndex:10
       });
@@ -227,6 +473,9 @@ export class GoogleMapService extends EventEmitter<any> {
   updateUserMarkerPos(position:any):void{
     let newLatLng = new google.maps.LatLng(position.lat, position.lng);
     this.gpsUserMarker.setPosition(newLatLng);
+
+    this.bounds.extend(newLatLng);
+    this.map.fitBounds(this.bounds);
   }
 
   clearMarkerArray(filter:string|null):void{
@@ -254,6 +503,31 @@ export class GoogleMapService extends EventEmitter<any> {
         }
       })
     }
+    // if(this.markersArray.indexOf(filter)<= -1){
+    //   return
+    // }
     this.map.fitBounds(newBounds);
+  }
+
+  filterSearch(filter:string|null):void{
+    // reset marker array search
+    this.markersArray.map(marker=>{
+      marker.setMap(this.map)
+    })
+    // do filter
+    if (filter === null){
+      this.markersArray.map(marker => {
+          marker.setMap(this.map)
+          //newBounds.extend(marker.getPosition());
+      })
+    }
+    else {
+      this.markersArray.filter((item) => {
+        if(!item.description){
+          return null
+        }
+        return (item.description.toLowerCase().indexOf(filter.toLowerCase()) <= -1)?item.setMap(null): null
+      })
+    }
   }
 }

@@ -10,6 +10,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar
+    #searchbar
+    (click)="focus($event)"
+    (ionInput)="onSearch($event)">
+  </ion-searchbar>
 
   <div #map class="gMap"></div>
 <!--
@@ -22,7 +27,7 @@
   </ion-list> -->
 
   <ion-fab right bottom>
-    <button  ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
+    <button (click)="presentModal()" ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
-  
+
 </ion-content>

@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 20-04-2017
+ * @Last modified time: 04-05-2017
  */
 
 import { Injectable, Inject } from '@angular/core';
@@ -153,8 +153,8 @@ export class DatasService {
         observer.next({ type: 'GET_DATAS_ARRAY_FAILED' })
       }
       // Define Heders request
-
-      let body:string = JSON.stringify({description: _query.params});
+      //console.log(_query.params)
+      let body:string = JSON.stringify(_query.params);
       let headers:Headers = new Headers({'cache-control': 'no-cache','x-access-token': storage.token, 'Content-Type': 'application/json'});
       let options:RequestOptions = new RequestOptions({ headers: headers });
 

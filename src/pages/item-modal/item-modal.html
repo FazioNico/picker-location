@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Add New Item Location
+    </ion-title>
+    <ion-buttons end>
+        <button (click)="dismiss()" ion-button >
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+
+    <ion-list margin-top>
+
+      <ion-item>
+        <ion-label color="primary" floating>Detail</ion-label>
+        <ion-input formControlName="description"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item> -->
+        <!-- <ion-label color="primary">Category</ion-label> -->
+        <!-- <ion-input [(ngModel)]="test" (keyup)="autoComplet($event)" value=""></ion-input> -->
+        <!-- <ion-select [(ngModel)]="category" placeholder="Select..." interface="popover">
+          <ion-option *ngFor="let cat of categories" value="{{ cat }}">{{ cat }}</ion-option>
+        </ion-select> -->
+      <!-- </ion-item> -->
+      <div>
+        <ion-searchbar #searchbar formControlName="category" [showCancelButton]="false" type="text" placeholder="Category" (ionInput)="autoComplet()"></ion-searchbar>
+        <ion-list *ngIf="isVisible">
+          <ion-item  *ngFor="let item of categories" (click)="toogleSearch(item)">
+            {{ item }}
+          </ion-item>
+        </ion-list>
+
+        <ion-list  *ngIf="searchbar.value.length >=1 &&  categories.length ===0">
+          <ion-item>
+            New category
+          </ion-item>
+        </ion-list>
+      </div>
+
+
+      <ion-item>
+        <ion-label>Lat:</ion-label>
+        <ion-input disabled value="{{coords.position.lat}}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lng:</ion-label>
+        <ion-input disabled value="{{coords.position.lng}}"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div margin-horizontal text-center>
+      <button (click)="save()" ion-button round>Save</button>
+    </div>
+
+  </form>
+</ion-content>

@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 02-05-2017
+ * @Last modified time: 03-05-2017
  */
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,6 +25,9 @@ import { MenuNavModule } from "../components/menu-nav/menu-nav.module";
 
 // Import Root Providers
 import { GoogleMapService } from '../providers/google-map-service/google-map-service';
+import { GeolocationService } from '../providers/geolocation-service/geolocation-service';
+import { Geolocation, Geoposition, PositionError } from '@ionic-native/geolocation';
+
 
 const ionicAppConfig:Object = {
   tabsPlacement: 'bottom',
@@ -52,7 +55,9 @@ const ionicAppConfig:Object = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GoogleMapService
+    GoogleMapService,
+    Geolocation,
+    GeolocationService
   ]
 })
 export class AppModule {}

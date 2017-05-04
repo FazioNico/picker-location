@@ -1,0 +1,30 @@
+// @Author: Nicolas Fazio <webmaster-fazio>
+// @Date:   03-05-2017
+// @Email:  contact@nicolasfazio.ch
+// @Last modified by:   webmaster-fazio
+// @Last modified time: 03-05-2017
+
+item-modal {
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: color($colors, primary)!important;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: color($colors, primary)!important;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: color($colors, primary)!important;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: color($colors, primary)!important;
+  }
+  .searchbar-md .searchbar-input {
+
+  }
+  .searchbar-md .searchbar-input {
+    box-shadow: none;
+    padding: 6px 6px;
+  }
+  .searchbar-md .searchbar-search-icon {
+    background:none;
+  }
+}
