@@ -3,11 +3,17 @@
  * @Date:   02-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 02-05-2017
+ * @Last modified time: 08-05-2017
  */
 
 import { Component} from '@angular/core';
 import { Events } from 'ionic-angular';
+
+import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs/Rx';
+
+import { AppStateI } from "../../store/app-stats";
+import { ICategoriesState } from '../../store/reducers/categoriesReducer';
 
 /**
  * Generated class for the MenuNav component.
@@ -19,18 +25,18 @@ import { Events } from 'ionic-angular';
   selector: 'menu-nav',
   templateUrl: 'menu-nav.html'
 })
-export class MenuNavComponent {
+export class MenuNavComponent{
 
-  categories:string[] = [];
+  public categoriesArray:Observable<ICategoriesState>;
 
-  constructor(public events: Events) {
-    this.events.subscribe('categories:created', (categories) => {
-      //console.log('categories:created', categories);
-      this.categories = categories
-    });
+  constructor(
+    public events: Events,
+    private store: Store<any>
+  ) {
+    this.categoriesArray = this.store.select((state:AppStateI) => state.categoriesArray)
   }
 
-  selectFilter(filterBy) {
+  selectFilter(filterBy:string):void {
     /**
      * Publish Ionic custom Events
      * View doc:http://ionicframework.com/docs/api/util/Events/
@@ -38,5 +44,4 @@ export class MenuNavComponent {
     //console.log('Filter selected')
     this.events.publish('filter:select', filterBy);
   }
-
 }

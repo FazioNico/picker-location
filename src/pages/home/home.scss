@@ -2,7 +2,7 @@
 // @Date:   01-05-2017
 // @Email:  contact@nicolasfazio.ch
 // @Last modified by:   webmaster-fazio
-// @Last modified time: 04-05-2017
+// @Last modified time: 08-05-2017
 
 page-home {
 
@@ -33,6 +33,7 @@ page-home {
    */
   .searchbar.searchbar-md {
     width:70px;
+    transition: width .2s ease;
   }
   .searchbar.searchbar-md.focus {
     width:100%;

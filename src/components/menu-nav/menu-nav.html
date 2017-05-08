@@ -1,12 +1,24 @@
 <!-- Generated template for the MenuNav component -->
 
 <ion-content>
+
   <ion-list>
     <button menuClose ion-item (click)="selectFilter(null)">
       All
     </button>
-    <button menuClose *ngFor="let category of categories" ion-item (click)="selectFilter(category)">
-      {{ category }}
+    <button menuClose *ngFor="let category of (categoriesArray | async)" ion-item (click)="selectFilter(category._id)">
+      <ion-avatar item-left>
+        <svg version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="20 -6 10 60"
+          overflow="inherit">
+            <path
+              [attr.fill]="category.color"
+              [attr.d]="category.coords"/>
+        </svg>
+      </ion-avatar>
+      {{ category.title }}
     </button>
   </ion-list>
 </ion-content>
