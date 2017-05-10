@@ -7,20 +7,20 @@
  */
 
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, Events, ModalController, Searchbar, Modal } from 'ionic-angular';
-
+import { NavController, Events, ModalController, Modal } from 'ionic-angular';
+// NgRx Store
 import { Store, Action } from '@ngrx/store'
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-
+// Store tools
 import { AppStateI } from "../../store/app-stats";
 import { MainActions } from '../../store/actions/mainActions';
 import { ICategoriesState } from '../../store/reducers/categoriesReducer';
-
+// Observable Services
 import { GoogleMapService } from '../../providers/google-map-service/google-map-service';
 import { GeolocationService } from '../../providers/geolocation-service/geolocation-service';
-
+// declare google to prevent type error
 declare var google;
 
 @Component({
@@ -29,14 +29,13 @@ declare var google;
 })
 export class HomePage {
 
-  public userPosition:Object = {lat:46.1040100, lng:6.1616500}
+  public userPosition:{lat:number, lng:number} = {lat:46.1040100, lng:6.1616500}
   public storeInfo:Observable<AppStateI>;
   public storeDatas:Observable<any>;
   public storeCategories:Observable<ICategoriesState>;
   public categories: ICategoriesState = [];
 
   @ViewChild('map') mapElement: ElementRef;
-  @ViewChild('searchbar') searchbar:Searchbar;
 
   constructor(
     public navCtrl: NavController,
@@ -90,14 +89,11 @@ export class HomePage {
    }
 
   /**
-   * Bof SearchBare methode
+   * Bof SearchBar methode
    */
   onSearch(event:any):void{
     this._googleMapService.filterSearch(event.target.value || null)
   }
-  /**
-   * Eof Search Methode
-   */
 
   /**
    * Bof Geolocation Methode
@@ -133,7 +129,7 @@ export class HomePage {
 
 
   /**
-   * Bof Google Map  Methode
+   * Bof Google Map Methode
    */
   loadGoogleSDK():void{
     this._googleMapService.loadGoogleMap()

@@ -3,7 +3,7 @@
 * @Date:   06-02-2017
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 08-05-2017
+ * @Last modified time: 10-05-2017
 */
 
 import { Injectable, EventEmitter } from '@angular/core';
@@ -117,6 +117,7 @@ export class GoogleMapService extends EventEmitter<any> {
 
   // setup google maps element
   setupMap(coords,mapElement:ElementRef):void{
+    //console.log(mapElement.nativeElement)
     this.map = new google.maps.Map(mapElement.nativeElement, {
       center: {lat: coords.lat, lng: coords.lng},
       zoom: 13,
