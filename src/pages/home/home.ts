@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 08-05-2017
+ * @Last modified time: 10-05-2017
  */
 
 import { Component, ViewChild, ElementRef } from '@angular/core';
@@ -92,45 +92,6 @@ export class HomePage {
   /**
    * Bof SearchBare methode
    */
-  focus(e:any):void{
-    let el:any  = e.target;
-    //console.log('check->', el.classList.value)
-    if([...el.classList.value].indexOf('button-inner') >-1){
-        //this.searchbar._searchbarInput.nativeElement.blur()
-        this.closeSearch(e)
-        return
-    }
-    if([...el.classList.value].indexOf('searchbar-search-icon') >-1){
-        this.openSearch()
-        return
-    }
-    if([...el.classList.value].indexOf('searchbar-input') <= -1){
-      return
-    }
-    // if(!el.value){
-    //   this.openSearch()
-    // }
-  }
-
-  openSearch():void{
-    //console.log('openSearch transform')
-    let input:Element = this.searchbar._searchbarInput.nativeElement;
-    this.searchbar.getElementRef().nativeElement.firstChild.classList.add('focus')
-    this.searchbar.setElementClass('focus', true)
-    input.classList.add('focus')
-  }
-
-  closeSearch(e:any):void{
-    //console.log('closeSearch transform')
-    let input:Element = this.searchbar._searchbarInput.nativeElement;
-    this.searchbar.getElementRef().nativeElement.firstChild.classList.remove('focus')
-    this.searchbar.setElementClass('focus', false)
-    this.searchbar.setValue('')
-    this.searchbar.inputBlurred(e)
-    //input.blur()
-    input.classList.remove('focus')
-  }
-
   onSearch(event:any):void{
     this._googleMapService.filterSearch(event.target.value || null)
   }

@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 08-05-2017
+ * @Last modified time: 10-05-2017
  */
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +22,7 @@ import { NgRxStoreModule } from "../store/store.module";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MenuNavModule } from "../components/menu-nav/menu-nav.module";
+import { SearchBarModule } from "../components/search-bar/search-bar.module";
 
 // Import Root Providers
 import { GoogleMapService } from '../providers/google-map-service/google-map-service';
@@ -44,7 +45,8 @@ const ionicAppConfig:Object = {
     IonicModule.forRoot(MyApp, ionicAppConfig),
     NgRxStoreModule,
     EnvironmentsModule,
-    MenuNavModule
+    MenuNavModule,
+    SearchBarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
