@@ -3,24 +3,24 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 08-05-2017
+ * @Last modified time: 11-05-2017
  */
 
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, Events, ModalController, Searchbar, Modal } from 'ionic-angular';
-
+import { NavController, Events, ModalController, Modal } from 'ionic-angular';
+// NgRx Store
 import { Store, Action } from '@ngrx/store'
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-
+// Store tools
 import { AppStateI } from "../../store/app-stats";
 import { MainActions } from '../../store/actions/mainActions';
 import { ICategoriesState } from '../../store/reducers/categoriesReducer';
-
+// Observable Services
 import { GoogleMapService } from '../../providers/google-map-service/google-map-service';
 import { GeolocationService } from '../../providers/geolocation-service/geolocation-service';
-
+// declare google to prevent type error
 declare var google;
 
 @Component({
@@ -29,14 +29,13 @@ declare var google;
 })
 export class HomePage {
 
-  public userPosition:Object = {lat:46.1040100, lng:6.1616500}
+  public userPosition:{lat:number, lng:number} = {lat:46.1040100, lng:6.1616500}
   public storeInfo:Observable<AppStateI>;
   public storeDatas:Observable<any>;
   public storeCategories:Observable<ICategoriesState>;
   public categories: ICategoriesState = [];
 
   @ViewChild('map') mapElement: ElementRef;
-  @ViewChild('searchbar') searchbar:Searchbar;
 
   constructor(
     public navCtrl: NavController,
@@ -90,53 +89,11 @@ export class HomePage {
    }
 
   /**
-   * Bof SearchBare methode
+   * Bof SearchBar methode
    */
-  focus(e:any):void{
-    let el:any  = e.target;
-    //console.log('check->', el.classList.value)
-    if([...el.classList.value].indexOf('button-inner') >-1){
-        //this.searchbar._searchbarInput.nativeElement.blur()
-        this.closeSearch(e)
-        return
-    }
-    if([...el.classList.value].indexOf('searchbar-search-icon') >-1){
-        this.openSearch()
-        return
-    }
-    if([...el.classList.value].indexOf('searchbar-input') <= -1){
-      return
-    }
-    // if(!el.value){
-    //   this.openSearch()
-    // }
+  onSearch(filter:any):void{
+    this._googleMapService.filterSearch(filter || null)
   }
-
-  openSearch():void{
-    //console.log('openSearch transform')
-    let input:Element = this.searchbar._searchbarInput.nativeElement;
-    this.searchbar.getElementRef().nativeElement.firstChild.classList.add('focus')
-    this.searchbar.setElementClass('focus', true)
-    input.classList.add('focus')
-  }
-
-  closeSearch(e:any):void{
-    //console.log('closeSearch transform')
-    let input:Element = this.searchbar._searchbarInput.nativeElement;
-    this.searchbar.getElementRef().nativeElement.firstChild.classList.remove('focus')
-    this.searchbar.setElementClass('focus', false)
-    this.searchbar.setValue('')
-    this.searchbar.inputBlurred(e)
-    //input.blur()
-    input.classList.remove('focus')
-  }
-
-  onSearch(event:any):void{
-    this._googleMapService.filterSearch(event.target.value || null)
-  }
-  /**
-   * Eof Search Methode
-   */
 
   /**
    * Bof Geolocation Methode
@@ -172,7 +129,7 @@ export class HomePage {
 
 
   /**
-   * Bof Google Map  Methode
+   * Bof Google Map Methode
    */
   loadGoogleSDK():void{
     this._googleMapService.loadGoogleMap()

@@ -3,13 +3,15 @@
 * @Date:   06-02-2017
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 08-05-2017
+ * @Last modified time: 11-05-2017
 */
 
 import { Injectable, EventEmitter } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { GMAP_API_KEY } from './apikey-config';
 import { GMAP_STYLE } from './gmap_style';
+
+import { AlertController } from 'ionic-angular';
 
 declare var google;
 
@@ -31,7 +33,9 @@ export class GoogleMapService extends EventEmitter<any> {
   gpsUserMarker:any;
   gmapEnable: boolean = false;
 
-  constructor() {
+  constructor(
+    private alertCtrl:AlertController
+  ) {
     super()
   }
 
@@ -117,6 +121,7 @@ export class GoogleMapService extends EventEmitter<any> {
 
   // setup google maps element
   setupMap(coords,mapElement:ElementRef):void{
+    //console.log(mapElement.nativeElement)
     this.map = new google.maps.Map(mapElement.nativeElement, {
       center: {lat: coords.lat, lng: coords.lng},
       zoom: 13,
@@ -222,8 +227,6 @@ export class GoogleMapService extends EventEmitter<any> {
   addOpenWindowEnvent(item, marker:any){
     let contentString:string = `
       <div>
-        <p><b>${item._id}</b></p>
-        <hr/>
         <p>${item.description}</p>
       </div>`;
     let infoWindow = new google.maps.InfoWindow({
@@ -231,8 +234,28 @@ export class GoogleMapService extends EventEmitter<any> {
     });
     // this.infoWindow.setContent(contentString);
     google.maps.event.addListener(marker, 'click', ()=> {
-      infoWindow.open(this.map, marker);
-      // this.infoWindow.open(this.map, marker);
+      //infoWindow.open(this.map, marker);
+      let alert = this.alertCtrl.create({
+        title: (marker.category)? marker.category.title || 'Marker' : 'Marker',
+        subTitle: contentString,
+        buttons: [
+          {
+            text: 'Close',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Edit',
+            handler: () => {
+              console.log('Edit clicked');
+            }
+          }
+        ]
+      });
+      alert.present();
+
     });
   }
 

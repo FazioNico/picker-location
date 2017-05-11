@@ -2,7 +2,7 @@
 // @Date:   01-05-2017
 // @Email:  contact@nicolasfazio.ch
 // @Last modified by:   webmaster-fazio
-// @Last modified time: 08-05-2017
+// @Last modified time: 10-05-2017
 
 page-home {
 
@@ -24,52 +24,4 @@ page-home {
       display: none;
     }
   }
-  ion-searchbar {
-    z-index: 1;
-  }
-
-  /**
-   * Bof - SearchBar animation effect
-   */
-  .searchbar.searchbar-md {
-    width:70px;
-    transition: width .2s ease;
-  }
-  .searchbar.searchbar-md.focus {
-    width:100%;
-  }
-  .searchbar-md .searchbar-input-container {
-    overflow: hidden;
-    border-radius: 100%;
-    z-index: 1;
-    border: solid 0px;
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
-    width: 44px;
-    max-height: 44px;
-    transition: width .2s ease;
-    transform-origin: 0rem;
-  }
-  .searchbar-md .searchbar-input-container.focus {
-    border-radius: 0%;
-    box-shadow: none;
-    width: 100%;
-    max-height: none;
-    transition: .3s ease;
-  }
-  .searchbar-md .searchbar-search-icon {
-    z-index:1;
-    margin-left: -4px;
-  }
-  .searchbar-md .searchbar-input {
-    transition: 500ms ease .1s;
-    transform-origin: left;
-    transform: translateX(-55%);
-  }
-  .searchbar-md .searchbar-input.focus{
-    transition: 500ms ease;
-    transform: translateX(0%);
-  }
-  /**
-   * Eof
-   */
 }

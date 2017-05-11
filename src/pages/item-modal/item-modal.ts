@@ -3,7 +3,7 @@
  * @Date:   03-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 08-05-2017
+ * @Last modified time: 11-05-2017
  */
 
 import { Component, ViewChild } from '@angular/core';
@@ -35,6 +35,7 @@ import { ICON_DATAS, IconI } from './iconDatas'
 })
 export class ItemModal{
 
+  public currentItem:any;
   public uid:string;
   public form: FormGroup;
   public coords:{lat:number,lng:number};
@@ -63,14 +64,25 @@ export class ItemModal{
         this.uid = state.currentUser._id
       }
     })
-    this.form = fb.group({
-        description: ['', Validators.minLength(2)],
-        category: ['', Validators.required],
-      });
+    // if is a new item
+    if(!this.navParams.get('item')){
+      this.form = fb.group({
+          description: ['', Validators.minLength(2)],
+          category: ['', Validators.required],
+        });
+    }
+    // it edit an existing item
+    else {
+      this.currentItem = this.navParams.get('item')
+      this.form = fb.group({
+          description: [this.currentItem.description, Validators.minLength(2)],
+          category: [this.currentItem.category, Validators.required],
+        });
+    }
   }
 
 
-  moreColore(){
+  moreColor():void{
     this.isMore = !this.isMore
     this.selectedColor = Object.assign({},{el:null, color:null})
   }
@@ -144,7 +156,7 @@ export class ItemModal{
       this.store.dispatch(<Action>this.mainActions.create_category( { path: '/categories', params: {cat:newCategory, item: newItem}} ));
 
     }
-    // back to home page 
+    // back to home page
     this.dismiss()
   }
 
