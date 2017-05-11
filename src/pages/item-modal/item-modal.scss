@@ -2,7 +2,7 @@
 // @Date:   03-05-2017
 // @Email:  contact@nicolasfazio.ch
 // @Last modified by:   webmaster-fazio
-// @Last modified time: 05-05-2017
+// @Last modified time: 11-05-2017
 
 item-modal {
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -37,5 +37,22 @@ item-modal {
     flex: initial;
     text-align: center;
     padding-top: 20px;
+  }
+
+  #icon-camera {
+    ion-icon {
+      font-size: 14rem;
+    }
+
+    span {
+      color: color($colors, primary);
+      cursor: pointer;
+    }
+  }
+
+  ion-chip {
+    ion-label.label.label-md{
+      font-size: 80%;
+    }
   }
 }

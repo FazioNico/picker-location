@@ -3,7 +3,7 @@
  * @Date:   03-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 08-05-2017
+ * @Last modified time: 11-05-2017
  */
 
 import { Component, ViewChild } from '@angular/core';
@@ -70,7 +70,7 @@ export class ItemModal{
   }
 
 
-  moreColore(){
+  moreColor():void{
     this.isMore = !this.isMore
     this.selectedColor = Object.assign({},{el:null, color:null})
   }
@@ -144,7 +144,7 @@ export class ItemModal{
       this.store.dispatch(<Action>this.mainActions.create_category( { path: '/categories', params: {cat:newCategory, item: newItem}} ));
 
     }
-    // back to home page 
+    // back to home page
     this.dismiss()
   }
 

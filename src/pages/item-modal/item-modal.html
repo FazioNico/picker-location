@@ -13,6 +13,13 @@
 
 <ion-content>
   <form [formGroup]="form">
+    <div  id="icon-camera" margin text-center>
+      <ion-icon color="primary" name="image"></ion-icon><br />
+      <span>
+        Take a picture
+      </span>
+    </div>
+
     <ion-list margin-top>
       <ion-item>
         <ion-label color="primary" floating>Detail</ion-label>
@@ -54,7 +61,13 @@
                   [attr.d]="icon.coords"/>
             </svg>
 
-            <ion-chip *ngIf="i === 6 && !isMore" (click)="moreColore()" margin-left margin-bottom margin-top color="primary">
+            <ion-chip
+              *ngIf="i === 6 && !isMore"
+              (click)="moreColor()"
+              margin-left
+              margin-bottom
+              margin-top
+              color="grey">
               <ion-label>more colors</ion-label>
             </ion-chip>
 

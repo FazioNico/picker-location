@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 10-05-2017
+ * @Last modified time: 11-05-2017
  */
 
 import { Component, ViewChild, ElementRef } from '@angular/core';
@@ -91,8 +91,8 @@ export class HomePage {
   /**
    * Bof SearchBar methode
    */
-  onSearch(event:any):void{
-    this._googleMapService.filterSearch(event.target.value || null)
+  onSearch(filter:any):void{
+    this._googleMapService.filterSearch(filter || null)
   }
 
   /**

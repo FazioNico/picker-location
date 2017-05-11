@@ -3,7 +3,7 @@
  * @Date:   10-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 10-05-2017
+ * @Last modified time: 11-05-2017
  */
 
 import { Component, ViewChild, EventEmitter, Output } from '@angular/core';
@@ -69,7 +69,7 @@ export class SearchBarComponent {
   }
 
   onSearch(event:any):void{
-    this.emitSearch.emit(event)
+    this.emitSearch.emit(event.target.value || null)
   }
 
 }
