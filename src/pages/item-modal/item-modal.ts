@@ -35,6 +35,7 @@ import { ICON_DATAS, IconI } from './iconDatas'
 })
 export class ItemModal{
 
+  public currentItem:any;
   public uid:string;
   public form: FormGroup;
   public coords:{lat:number,lng:number};
@@ -63,10 +64,21 @@ export class ItemModal{
         this.uid = state.currentUser._id
       }
     })
-    this.form = fb.group({
-        description: ['', Validators.minLength(2)],
-        category: ['', Validators.required],
-      });
+    // if is a new item
+    if(!this.navParams.get('item')){
+      this.form = fb.group({
+          description: ['', Validators.minLength(2)],
+          category: ['', Validators.required],
+        });
+    }
+    // it edit an existing item
+    else {
+      this.currentItem = this.navParams.get('item')
+      this.form = fb.group({
+          description: [this.currentItem.description, Validators.minLength(2)],
+          category: [this.currentItem.category, Validators.required],
+        });
+    }
   }
 
 
