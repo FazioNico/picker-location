@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 10-05-2017
+ * @Last modified time: 12-05-2017
  */
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,9 +23,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MenuNavModule } from "../components/menu-nav/menu-nav.module";
 import { SearchBarModule } from "../components/search-bar/search-bar.module";
+import { GmapModule } from "../components/gmap/gmap.module";
 
 // Import Root Providers
-import { GoogleMapService } from '../providers/google-map-service/google-map-service';
 import { GeolocationService } from '../providers/geolocation-service/geolocation-service';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -46,7 +46,8 @@ const ionicAppConfig:Object = {
     NgRxStoreModule,
     EnvironmentsModule,
     MenuNavModule,
-    SearchBarModule
+    SearchBarModule,
+    GmapModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +58,6 @@ const ionicAppConfig:Object = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GoogleMapService,
     Geolocation,
     GeolocationService
   ]

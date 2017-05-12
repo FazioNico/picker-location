@@ -2,26 +2,8 @@
 // @Date:   01-05-2017
 // @Email:  contact@nicolasfazio.ch
 // @Last modified by:   webmaster-fazio
-// @Last modified time: 10-05-2017
+// @Last modified time: 11-05-2017
 
 page-home {
 
-  .gMap {
-    position: absolute;
-    top:0px;
-    left:0px;
-    min-height: 250px;
-    max-height: 100%; //calc(100% - 56px);
-    width: 100%;
-
-    .gm-style-mtc, .gm-svpc, .gm-style-cc{
-      display: none;
-    }
-    .gm-style .gm-style-iw {
-      color: #333;
-    }
-    .gmnoprint {
-      display: none;
-    }
-  }
 }
