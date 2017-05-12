@@ -11,19 +11,16 @@
 
 <ion-content>
   <pickL-search-bar (emitSearch)="onSearch($event)"></pickL-search-bar>
-  <!-- <ion-searchbar
-    #searchbar
-    (click)="focus($event)"
-    (ionInput)="onSearch($event)">
-  </ion-searchbar> -->
-
-  <div #map class="gMap"></div>
 
   <!-- <div>
-    <div #slidingItem *ngFor="let item of (storeDatas | async)">
-          {{ item | json }}
+    home
+    <div *ngFor="let homeItem of (storeDatas | async)">
+          {{ homeItem._id }}
     </div>
-  </div> -->
+  </div>
+  <hr> -->
+  
+  <pickL-gmap [datasInput]="(storeDatas | async)" [userPosition]="userPosition"></pickL-gmap>
 
   <ion-fab right bottom>
     <button (click)="presentModal()" ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
