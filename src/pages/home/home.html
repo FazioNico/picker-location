@@ -19,8 +19,11 @@
     </div>
   </div>
   <hr> -->
-  
-  <pickL-gmap [datasInput]="(storeDatas | async)" [userPosition]="userPosition"></pickL-gmap>
+
+  <pickL-gmap
+    [datasInput]="(storeDatas | async)"
+    [userPosition]="userPosition"
+    (emitInfoWindow)="onInfoWindow($event)"></pickL-gmap>
 
   <ion-fab right bottom>
     <button (click)="presentModal()" ion-fab color="primary"><ion-icon name="add"></ion-icon></button>

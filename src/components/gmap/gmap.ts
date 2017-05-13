@@ -13,7 +13,9 @@ import {
   Input,
   OnInit,
   OnChanges,
-  SimpleChanges } from '@angular/core';
+  SimpleChanges,
+  EventEmitter,
+  Output } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 // Observable Services
 import { GoogleMapService } from '../../providers/google-map-service/google-map-service';
@@ -41,7 +43,8 @@ export class GmapComponent implements OnInit, OnChanges{
   public markersArray: any[] = [];
 
   @Input() datasInput: any[] = []
-  @Input()  userPosition: {lat:number, lng:number} = {lat:46.1040100, lng:6.1616500};
+  @Input() userPosition: {lat:number, lng:number} = {lat:46.1040100, lng:6.1616500};
+  @Output() emitInfoWindow: EventEmitter<any> = new EventEmitter();
   @ViewChild('map') mapElement: ElementRef;
 
   constructor(
@@ -202,7 +205,8 @@ export class GmapComponent implements OnInit, OnChanges{
           {
             text: 'Edit',
             handler: () => {
-              console.log('Edit clicked');
+              console.log('Edit clicked', item);
+              this.emitInfoWindow.emit(item)
             }
           }
         ]

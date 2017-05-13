@@ -23,62 +23,79 @@
     <ion-list margin-top>
       <ion-item>
         <ion-label color="primary" floating>Detail</ion-label>
-        <ion-input formControlName="description"></ion-input>
+        <ion-input class="form-control" formControlName="description"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="currentItem">
+        <ion-label floating>Category</ion-label>
+        <ion-input formControlName="category" ></ion-input>
       </ion-item>
     </ion-list>
 
-    <ion-searchbar #searchbar formControlName="category" [showCancelButton]="false" type="text" placeholder="Category" (ionInput)="autoComplet()"></ion-searchbar>
-    <ion-list *ngIf="isVisible">
+
+    <ion-searchbar *ngIf="!currentItem" #searchbar formControlName="category" class="form-control" [showCancelButton]="false" type="text" placeholder="Category" (ionInput)="autoComplet()"></ion-searchbar>
+    <ion-list *ngIf="isVisible && !currentItem">
       <ion-item  *ngFor="let item of (categoriesArray | async) " (click)="toogleSearch(item)">
+        <ion-avatar item-left>
+          <svg version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            viewBox="0 0 50 50"
+            overflow="inherit">
+              <path
+                [attr.fill]="item.color"
+                [attr.d]="item.coords"/>
+          </svg>
+        </ion-avatar>
         {{ item.title }}
       </ion-item>
     </ion-list>
+
+
   </form>
 
-  <div *ngIf="searchbar.value.length >=1 && (categoriesArray | async).length ===0">
+  <div *ngIf="!currentItem">
+    <div *ngIf="searchbar && searchbar.value.length >=1 && (categoriesArray | async).length ===0">
 
-      <p class="customLabel" padding-left>New category color</p>
-      <ion-grid >
-        <ion-row>
-          <ion-col *ngFor="let icon of icons; let i = index" >
-            <svg #svg *ngIf="i <= 5  && !isMore" (click)="choseColor(svg,icon.color)" margin-horizontal version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
-              viewBox="0 0 50 50"
-              overflow="inherit">
-                <path
-                  [attr.fill]="icon.color"
-                  [attr.d]="icon.coords"/>
-            </svg>
+        <p class="customLabel" padding-left>New category color</p>
+        <ion-grid >
+          <ion-row>
+            <ion-col *ngFor="let icon of icons; let i = index" >
+              <svg #svg *ngIf="i <= 5  && !isMore" (click)="choseColor(svg,icon.color)" margin-horizontal version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 50 50"
+                overflow="inherit">
+                  <path
+                    [attr.fill]="icon.color"
+                    [attr.d]="icon.coords"/>
+              </svg>
 
-            <svg #svg *ngIf="isMore" (click)="choseColor(svg, icon.color)" margin-horizontal version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
-              viewBox="0 0 50 50"
-              overflow="inherit">
-                <path
-                  [attr.fill]="icon.color"
-                  [attr.d]="icon.coords"/>
-            </svg>
+              <svg #svg *ngIf="isMore" (click)="choseColor(svg, icon.color)" margin-horizontal version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 50 50"
+                overflow="inherit">
+                  <path
+                    [attr.fill]="icon.color"
+                    [attr.d]="icon.coords"/>
+              </svg>
 
-            <ion-chip
-              *ngIf="i === 6 && !isMore"
-              (click)="moreColor()"
-              margin-left
-              margin-bottom
-              margin-top
-              color="grey">
-              <ion-label>more colors</ion-label>
-            </ion-chip>
+              <ion-chip
+                *ngIf="i === 6 && !isMore"
+                (click)="moreColor()"
+                margin-left
+                margin-bottom
+                margin-top
+                color="grey">
+                <ion-label>more colors</ion-label>
+              </ion-chip>
 
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-
-
-
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </div>
   </div>
+
 
   <ion-list>
     <ion-item>
@@ -93,7 +110,7 @@
   </ion-list>
 
   <div margin-horizontal margin-bottom text-center>
-    <button (click)="save()" ion-button round>Save</button>
+    <button (click)="save()" [attr.disabled]="form.valid === false? true : null" ion-button round>Save</button>
   </div>
 
 </ion-content>

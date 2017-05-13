@@ -86,6 +86,11 @@ export class HomePage {
     this.store.dispatch(<Action>this.mainActions.logout());
   }
 
+  onInfoWindow(item){
+    console.log('onInfoWindow-> ', item)
+    let modal:Modal = this.modalCtrl.create('ItemModal', {coords: this.userPosition, item});
+    modal.present();
+  }
   /**
   * Bof SearchBar & menu side filter methode
   */
