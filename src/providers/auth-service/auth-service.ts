@@ -3,7 +3,7 @@
  * @Date:   17-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 19-04-2017
+ * @Last modified time: 14-05-2017
  */
 
 import { Injectable, Inject } from '@angular/core';
@@ -73,7 +73,7 @@ export class AuthService {
     })
   }
 
-  doAuth(_creds) :Observable<any> {
+  doAuth(_creds:any) :Observable<any> {
     let headers:Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let options:RequestOptions = new RequestOptions({ headers: headers });
 

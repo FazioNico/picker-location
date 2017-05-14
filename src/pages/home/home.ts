@@ -3,7 +3,7 @@
 * @Date:   14-04-2017
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 12-05-2017
+ * @Last modified time: 14-05-2017
 */
 
 import { Component, ViewChild, ElementRef } from '@angular/core';
@@ -44,8 +44,6 @@ export class HomePage {
     public events: Events,
     public modalCtrl: ModalController
   ) {
-    //this.loadGoogleSDK();
-
     // Dispatch Store Action
     this.store.dispatch(<Action>this.mainActions.get_categories_array('/categories'));
     this.store.dispatch(<Action>this.mainActions.get_data_array('/items'));
@@ -70,7 +68,6 @@ export class HomePage {
     */
     this.events.subscribe('filter:select', (filter) => {
       this.filterCategoriesMarkerArray(filter)
-      //this.store.dispatch(<Action>this.mainActions.datasFilterBy(filter));
     });
   }
 
@@ -82,20 +79,16 @@ export class HomePage {
     modal.present();
   }
 
-  onLogout():void{
-    this.store.dispatch(<Action>this.mainActions.logout());
-  }
-
-  onInfoWindow(item){
-    console.log('onInfoWindow-> ', item)
+  onInfoWindow(item:any):void{
+    //console.log('onInfoWindow-> ', item)
     let modal:Modal = this.modalCtrl.create('ItemModal', {coords: this.userPosition, item});
     modal.present();
   }
   /**
   * Bof SearchBar & menu side filter methode
   */
-  onSearch(filter:any):void{
-    console.log('filter search-> ', filter)
+  onSearch(filter:string|null):void{
+    //console.log('filter search-> ', filter)
     if(filter=== null){
       this.storeDatas = this.storeInfo
                               .map((state:AppStateI) => state.dataArray.dataArray )
@@ -108,16 +101,17 @@ export class HomePage {
       this.storeDatas = this.storeInfo
                               .map((state:AppStateI) => state.dataArray.dataArray )
                               .map(state => state.filter(
-                                  item=> (item.description)?item.description.toLowerCase().indexOf(filter.toLowerCase()) > 0:null
+                                  item => (item.description)?item.description.toLowerCase().indexOf(filter.toLowerCase()) >= 0:null
                                 ).map(
                                   item => Object.assign({}, item, {category: this.categories.filter(cat => cat._id === item.category)[0]})
                                 )
                               );
     }
+    this.storeDatas.subscribe(i=>{console.log(i)})
   }
 
   filterCategoriesMarkerArray(filter:string|null):void{
-    console.log('filter cat')
+    //console.log('filter cat')
     this.storeDatas = this.storeInfo
                           .map((state:AppStateI) => state.dataArray.dataArray )
                           .map(state=> state.filter(item => {
@@ -152,9 +146,9 @@ export class HomePage {
 
   // Geolocation onSuccess: Get the current location
   geolocationResult(data):void {
-    console.log('geolocationResult',data);
+    //console.log('geolocationResult',data);
     if(!data.position) {
-      //console.log("Error onGeolocation")
+      // alert("Error onGeolocation")
       return
     }
     // asign user location

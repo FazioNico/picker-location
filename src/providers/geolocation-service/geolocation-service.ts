@@ -3,7 +3,7 @@
  * @Date:   03-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 04-05-2017
+ * @Last modified time: 14-05-2017
  */
 
  import { Injectable, EventEmitter } from '@angular/core';
@@ -29,14 +29,14 @@
    }
 
    startGeolocation():void {
-     console.log('start...')
+     //console.log('start...')
      this.geolocation.getCurrentPosition().then((pos:any) => {
-       console.log('then...', pos)
+       //console.log('then...', pos)
        this.onGeoSuccess(pos)
        this.watchGeoID = this.geolocation.watchPosition();
        this.subscription = this.watchGeoID.subscribe(
          (data:Geoposition) => {
-           console.log('sub...', data)
+           //console.log('sub...', data)
            // data can be a set of coordinates, or an error (if an error occurred).
            // data.coords.latitude
            // data.coords.longitude
@@ -73,7 +73,7 @@
 
    // onError: Failed to get the location
    onGeoError(err:any):void {
-     console.log(err)
+     //console.log(err)
      this.emit({
        error: err
      });

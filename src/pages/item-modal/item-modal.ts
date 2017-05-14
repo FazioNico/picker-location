@@ -3,10 +3,10 @@
  * @Date:   03-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 13-05-2017
+ * @Last modified time: 14-05-2017
  */
 
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, Searchbar } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -59,7 +59,6 @@ export class ItemModal{
     this.categoriesArray = this.store.select((state:AppStateI) => state.categoriesArray)
     this.storeInfo = this.store.select((state:any) => state.currentUser )
     this.storeInfo.subscribe((state:any)=>{
-      console.log('sub state->', state.currentUser._id)
       if(state.currentUser){
         this.uid = state.currentUser._id
       }
@@ -104,7 +103,7 @@ export class ItemModal{
     }
 
     this.selectedColor = Object.assign({},{el:svg, color:color})
-    console.log(this.selectedColor,color)
+    //console.log(this.selectedColor,color)
   }
 
   autoComplet():void{
@@ -115,7 +114,7 @@ export class ItemModal{
     let val:string = this.form.value.category;
     (val.length>1 )? this.isVisible = true : this.isVisible = false;
 
-    console.log(val.length, this.isVisible);
+    //console.log(val.length, this.isVisible);
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.categoriesArray =  this.categoriesArray.map((item) => {
@@ -127,8 +126,8 @@ export class ItemModal{
     }
   }
 
-  toogleSearch(item){
-    console.log(item, this.searchbar._value)
+  toogleSearch(item:any):void{
+    //console.log(item, this.searchbar._value)
     this.isVisible = !this.isVisible
     this.form.value.category = item._id
     this.searchbar._value = item.title
@@ -136,7 +135,7 @@ export class ItemModal{
   }
 
   save():void{
-    console.log('save', this.form.value)
+    // console.log('save', this.form.value)
     let newItem = this.form.value;
     newItem.coords = {lat: this.coords.lat,lng: this.coords.lng};
     newItem.datetime = Date.now();
@@ -153,12 +152,12 @@ export class ItemModal{
         updatedItem._id = this.currentItem._id
         updatedItem.coords = this.currentItem.coords
         updatedItem.category = this.currentItem.category._id
-        console.log('update current Item->', updatedItem, this.form.controls.category.touched)
+        // console.log('update current Item->', updatedItem, this.form.controls.category.touched)
         //this.store.dispatch(<Action>this.mainActions.update_data( { path: '/items', params: updatedItem} ));
 
       }
       else {
-        console.log('save new Item->', newItem)
+        // console.log('save new Item->', newItem)
         this.store.dispatch(<Action>this.mainActions.create_data( { path: '/items', params: newItem} ));
       }
     }
@@ -169,19 +168,18 @@ export class ItemModal{
         coords: this.selectedColor.el.children[0].attributes[1].value,
         user_id: this.uid,
       }
-      console.log('save new category with item ready->', newCategory)
+      // console.log('save new category with item ready->', newCategory)
       // then send the todo ready to DatasService
       this.store.dispatch(<Action>this.mainActions.create_category( { path: '/categories', params: {cat:newCategory, item: newItem}} ));
       // TODO: replace following code by righ server return to pass into categories reducer to update categories state
       this.store.dispatch(<Action>this.mainActions.get_categories_array('/categories'));
     }
     // back to home page
-    console.log(this.form)
+    // console.log(this.form)
     if(this.form.valid) this.dismiss();
   }
 
-  dismiss() {
-    let data = { 'foo': 'bar' };
-    this.viewCtrl.dismiss(data);
+  dismiss():void {
+    this.viewCtrl.dismiss();
   }
 }

@@ -1,13 +1,5 @@
-<ion-menu [content]="content">
-
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-menu *ngIf="user" [content]="content">
   <menu-nav></menu-nav>
-
 </ion-menu>
 
 <ion-nav id="nav" #content [root]="rootPage"></ion-nav>

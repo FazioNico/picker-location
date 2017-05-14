@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Add New Item Location
+      {{(currentItem?.category?.color)? 'Edit' : 'Add New'}}  Item Location
     </ion-title>
     <ion-buttons end>
         <button (click)="dismiss()" ion-button >
@@ -11,13 +11,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <form [formGroup]="form">
-    <div  id="icon-camera" margin text-center>
-      <ion-icon color="primary" name="image"></ion-icon><br />
-      <span>
-        Take a picture
-      </span>
+    <div id="icon-camera" margin text-center>
+      <svg margin-top version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        overflow="inherit">
+          <path
+            [attr.fill]="currentItem?.category?.color || '#1998f7'"
+            [attr.d]="currentItem?.category?.coords || 'M25.015 2.4c-7.8 0-14.121 6.204-14.121 13.854 0 7.652 14.121 32.746 14.121 32.746s14.122-25.094 14.122-32.746c0-7.65-6.325-13.854-14.122-13.854z'"/>
+      </svg>
     </div>
 
     <ion-list margin-top>
@@ -109,8 +114,14 @@
     </ion-item>
   </ion-list>
 
-  <div margin-horizontal margin-bottom text-center>
-    <button (click)="save()" [attr.disabled]="form.valid === false? true : null" ion-button round>Save</button>
+  <div margin-horizontal margin-bottom margin-top text-center>
+    <button 
+      (click)="save()"
+      [attr.disabled]="form.valid === false? true : null"
+      ion-button
+      margin-top
+      round>{{(currentItem?.category?.color)? 'Update' : 'Save'}}
+    </button>
   </div>
 
 </ion-content>

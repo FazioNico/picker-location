@@ -3,7 +3,7 @@
  * @Date:   17-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 02-05-2017
+ * @Last modified time: 14-05-2017
  */
 
 import { Component } from '@angular/core';
@@ -13,8 +13,6 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { Store, Action } from '@ngrx/store'
 
 import { MainActions } from '../../store/actions/mainActions';
-
-// import { AppStateI } from "../../store/app-stats";
 
 /**
  * Generated class for the Login page.
@@ -51,22 +49,20 @@ export class Login {
     });
   }
 
-  ionViewDidLoad() {
-  }
 
-  onLogin(){
+  onLogin():void{
     //this.submitted = true;
     if (this.userForm.valid) {
       this.store.dispatch(<Action>this.mainActions.login(this.userForm));
     }
   }
-  onSignup(){
+  onSignup():void{
     if (this.userForm.valid) {
       this.store.dispatch(<Action>this.mainActions.create_user(this.userForm));
     }
   }
 
-  toggleBtn(){
+  toggleBtn():void{
     this.loginBtn = !this.loginBtn
   }
 

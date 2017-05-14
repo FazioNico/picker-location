@@ -1,9 +1,49 @@
 <!-- Generated template for the MenuNav component -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Categories</ion-title>
+
+    <ion-buttons end *ngIf="authChecked | async">
+      <button ion-button icon-only (click)="onLogout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
 
   <ion-list>
     <button menuClose ion-item (click)="selectFilter(null)">
+      <ion-avatar item-left>
+        <svg class="all-svg-first" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="20 -6 10 60"
+          overflow="inherit">
+            <path
+              fill="#ef5350"
+              d="M25.015 2.4c-7.8 0-14.121 6.204-14.121 13.854 0 7.652 14.121 32.746 14.121 32.746s14.122-25.094 14.122-32.746c0-7.65-6.325-13.854-14.122-13.854z"/>
+        </svg>
+        <svg class="all-svg" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="20 -6 10 60"
+          overflow="inherit">
+            <path
+              fill="#ffa726"
+              d="M25.015 2.4c-7.8 0-14.121 6.204-14.121 13.854 0 7.652 14.121 32.746 14.121 32.746s14.122-25.094 14.122-32.746c0-7.65-6.325-13.854-14.122-13.854z"/>
+        </svg>
+        <svg class="all-svg-last" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="20 -6 10 60"
+          overflow="inherit">
+            <path
+              fill="#7e57c2"
+              d="M25.015 2.4c-7.8 0-14.121 6.204-14.121 13.854 0 7.652 14.121 32.746 14.121 32.746s14.122-25.094 14.122-32.746c0-7.65-6.325-13.854-14.122-13.854z"/>
+        </svg>
+      </ion-avatar>
       All
     </button>
     <button menuClose *ngFor="let category of (categoriesArray | async)" ion-item (click)="selectFilter(category._id)">

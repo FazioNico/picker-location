@@ -3,16 +3,17 @@
  * @Date:   02-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 08-05-2017
+ * @Last modified time: 14-05-2017
  */
 
 import { Component} from '@angular/core';
-import { Events } from 'ionic-angular';
+import { MenuController, Events, AlertController } from 'ionic-angular';
 
-import { Store } from '@ngrx/store'
+import { Store, Action } from '@ngrx/store'
 import { Observable } from 'rxjs/Rx';
 
 import { AppStateI } from "../../store/app-stats";
+import { MainActions } from '../../store/actions/mainActions';
 import { ICategoriesState } from '../../store/reducers/categoriesReducer';
 
 /**
@@ -28,12 +29,17 @@ import { ICategoriesState } from '../../store/reducers/categoriesReducer';
 export class MenuNavComponent{
 
   public categoriesArray:Observable<ICategoriesState>;
+  public authChecked:Observable<boolean>;
 
   constructor(
+    public menuCtrl: MenuController,
     public events: Events,
-    private store: Store<any>
+    private store: Store<any>,
+    private mainActions: MainActions,
+    private alertCtrl: AlertController
   ) {
     this.categoriesArray = this.store.select((state:AppStateI) => state.categoriesArray)
+    this.authChecked = this.store.select((state:AppStateI) => state.authCheck.authChecked)
   }
 
   selectFilter(filterBy:string):void {
@@ -43,5 +49,38 @@ export class MenuNavComponent{
      */
     //console.log('Filter selected')
     this.events.publish('filter:select', filterBy);
+  }
+
+  onLogout(){
+    let alert = this.alertCtrl.create({
+      title: 'Logout',
+      subTitle: 'Do you want to log out ?',
+      buttons: [
+        {
+          text: 'Close',
+          role: 'cancel',
+          handler: () => {
+            // console.log('Cancel clicked');
+            this.menuCtrl.close();
+          }
+        },
+        {
+          text: 'Logout',
+          handler: () => {
+            this.menuCtrl.close();
+            this.logoutUser()
+          }
+        }
+      ]
+    });
+    alert.present();
+    return Observable.create((observer) => {
+      observer.next({ type: 'ERROR_DISPLAYED' })
+    })
+  }
+
+  logoutUser():void{
+    console.log('logoutUser->')
+    this.store.dispatch(<Action>this.mainActions.logout());
   }
 }

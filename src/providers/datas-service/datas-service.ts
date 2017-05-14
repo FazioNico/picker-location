@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 07-05-2017
+ * @Last modified time: 14-05-2017
  */
 
 import { Injectable, Inject } from '@angular/core';
@@ -17,13 +17,13 @@ import { IEnvironment } from "../../../environments/env-model";
 const STORAGE_ITEM:string = 'authTokenTest';
 
 // define a Todo Interface to better usage
-export interface ITodo {
+export interface IItem {
   _id: string;
   description: string;
-  isComplete: boolean;
-  deadline?: number;
-  expire?: boolean;
+  category: any;
   user_id: string;
+  datetime: number;
+  coords: {lat:number, lng:number};
 }
 
 /*
@@ -58,7 +58,7 @@ export class DatasService {
       this.http.get(`${this.apiEndPoint}${_params.path}`, options)
                .map(response => response.json())
                .subscribe(
-                  datas => {
+                  (datas:IItem[]) => {
                     observer.next({ type: 'GET_DATAS_ARRAY_SUCCESS', payload: datas })
                   },
                   (error) => {
@@ -69,27 +69,22 @@ export class DatasService {
   }
 
   getDatasArrayMock(_params):Observable<any> {
-    let datas = [
+    let datas:IItem[] = [
       {
-        _id: 1,
-        description: 'first',
-        isComplete: true,
-        deadline: Date.now(),
-        date: Date.now()
-      },
-      {
-        _id: 2,
-        description: 'seconde',
-        isComplete: false,
-        deadline: Date.now(),
-        date: Date.now()
+        _id: '1',
+        description: 'test',
+        category: {},
+        user_id: 'xxxxxx',
+        datetime: Date.now(),
+        coords: {lat:4.0, lng:62.2},
+
       }
     ];
 
     return Observable.create((observer) => {
       Observable.of(datas)
                 .subscribe(
-                   datas => {
+                   (datas:IItem[]) => {
                      observer.next({ type: 'GET_DATAS_ARRAY_SUCCESS', payload: datas })
                    },
                    (error) => {
