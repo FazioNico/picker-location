@@ -3,7 +3,7 @@
 * @Date:   11-05-2017
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 14-05-2017
+ * @Last modified time: 15-05-2017
 */
 
 import {
@@ -54,14 +54,14 @@ export class GmapComponent implements OnInit, OnChanges{
     this.loadGoogleSDK();
   }
 
-  ngOnInit(){
-    console.log('ngOnInit datasInput->', this.datasInput)
+  ngOnInit():void{
+    // console.log('ngOnInit datasInput->', this.datasInput)
     this.datasInput.map(item => this.addMarker(item))
-    console.log('ngOnInit markersArray->', this.markersArray)
+    // console.log('ngOnInit markersArray->', this.markersArray)
   }
 
-  ngOnChanges(changes: SimpleChanges){
-    console.log('ngOnChanges->', changes)
+  ngOnChanges(changes: SimpleChanges):void{
+    // console.log('ngOnChanges->', changes)
     if(changes.datasInput && this.mapEnabeld){
       // console.log('change Datas->', this.datasInput, changes.datasInput.currentValue)
       this.clearMarkerArray()
@@ -161,7 +161,7 @@ export class GmapComponent implements OnInit, OnChanges{
 
   loadMarkersPosition():void{
     this.datasInput.map(item => this.addMarker(item))
-    console.log('loadMarkersPosition-> ',this.markersArray)
+    // console.log('loadMarkersPosition-> ',this.markersArray)
   }
 
   addMarker(item):void{
