@@ -3,7 +3,7 @@
  * @Date:   16-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 23-04-2017
+ * @Last modified time: 15-05-2017
  */
 
  import { async, TestBed, ComponentFixture } from '@angular/core/testing';
@@ -16,9 +16,17 @@
 
  import { MyApp } from './app.component';
 
+ import { MenuNavModule } from "../components/menu-nav/menu-nav.module";
+ import { SearchBarModule } from "../components/search-bar/search-bar.module";
+ import { GmapModule } from "../components/gmap/gmap.module";
+
  import { NgRxStoreModule } from "../store/store.module";
  import { MainActions } from '../store/actions/mainActions';
  import * as fromAuthCheck from '../store/reducers/authCheckedReducer';
+
+ // Import Root Providers
+ import { GeolocationService } from '../providers/geolocation-service/geolocation-service';
+ import { Geolocation } from '@ionic-native/geolocation';
 
  describe('MyApp Component', () => {
 
@@ -30,11 +38,16 @@
        declarations: [MyApp],
        imports: [
          IonicModule.forRoot(MyApp),
-         NgRxStoreModule
+         NgRxStoreModule,
+         MenuNavModule,
+         SearchBarModule,
+         GmapModule
        ],
        providers: [
          StatusBar,
-         SplashScreen
+         SplashScreen,
+         Geolocation,
+         GeolocationService
        ]
      })
    }));
