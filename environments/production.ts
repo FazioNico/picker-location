@@ -17,6 +17,6 @@
    apiEndpoint: 'http://localhost:8080',
 
    // Back-end
-   dbHost: 'mongodb://localhost:27017',
-   dbName: 'test'
+   dbHost: 'mongodb://picker_location:wCuLXZ8NYX@ds127321.mlab.com:27321',
+   dbName: 'picker_location'
  };
