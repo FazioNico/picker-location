@@ -2,9 +2,11 @@
 // @Date:   10-05-2017
 // @Email:  contact@nicolasfazio.ch
 // @Last modified by:   webmaster-fazio
-// @Last modified time: 10-05-2017
+// @Last modified time: 16-05-2017
 
 pickL-search-bar {
+  height: 58px;
+
   ion-searchbar {
     z-index: 1;
   }
@@ -14,12 +16,17 @@ pickL-search-bar {
    */
   .searchbar.searchbar-md {
     width:70px;
+    min-height:58px;
     transition: width .2s ease;
+  }
+  .searchbar-md .searchbar-input {
+    min-height: 42px;
   }
   .searchbar.searchbar-md.focus {
     width:100%;
   }
   .searchbar-md .searchbar-input-container {
+    min-height: 42px;
     overflow: hidden;
     border-radius: 100%;
     z-index: 1;
@@ -35,6 +42,7 @@ pickL-search-bar {
     box-shadow: none;
     width: 100%;
     max-height: none;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
     transition: .3s ease;
   }
   .searchbar-md .searchbar-search-icon {
