@@ -3,7 +3,7 @@
  * @Date:   03-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 14-05-2017
+ * @Last modified time: 16-05-2017
  */
 
 import { Component, ViewChild } from '@angular/core';
@@ -153,7 +153,7 @@ export class ItemModal{
         updatedItem.coords = this.currentItem.coords
         updatedItem.category = this.currentItem.category._id
         // console.log('update current Item->', updatedItem, this.form.controls.category.touched)
-        //this.store.dispatch(<Action>this.mainActions.update_data( { path: '/items', params: updatedItem} ));
+        this.store.dispatch(<Action>this.mainActions.update_data( { path: '/items', params: updatedItem} ));
 
       }
       else {

@@ -10,7 +10,7 @@
     "ionic:serve": "ionic-app-scripts serve",
     "start:prod": "ionic serve --prod",
     "start:dev": "npm run mongod & npm run server:dev & ionic serve --dev",
-    "server:prod": "tsc server/server.ts --outDir ./server/dist && NODE_ENV=prod node ./server/dist/server.js ",
+    "server:prod": "tsc server/server.ts --outDir ./server/dist && NODE_ENV=prod node ./server/dist/server/server.js ",
     "server:dev": "tsc server/server.ts -w --outDir ./server/dist & nodemon ./server/dist/server/server.js --dev  --ignore src/ --ignore www/ --ignore .tmp/",
     "mongod": "$HOME/Applications/mongodb/bin/mongod --dbpath $HOME/Applications/mongodb/data/db",
     "deploy:client": "npm run build:browser && gulp deploy",
