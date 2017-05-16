@@ -1,5 +1,5 @@
 #  Picker Location
-<blockquote>Picker location </blockquote>
+work in process...
 
 ## Overview
 Picker Location allows you to place GPS markers on a map to easily find them later.
