@@ -62,9 +62,9 @@
     <div *ngIf="searchbar && searchbar.value.length >=1 && (categoriesArray | async).length ===0">
 
         <p class="customLabel" padding-left>New category color</p>
-        <ion-grid >
+        <ion-grid>
           <ion-row>
-            <ion-col *ngFor="let icon of icons; let i = index" >
+            <ion-col col-4 *ngFor="let icon of icons; let i = index" >
               <svg #svg *ngIf="i <= 5  && !isMore" (click)="choseColor(svg,icon.color)" margin-horizontal version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
                 width="50"
                 height="50"
@@ -115,7 +115,7 @@
   </ion-list>
 
   <div margin-horizontal margin-bottom margin-top text-center>
-    <button 
+    <button
       (click)="save()"
       [attr.disabled]="form.valid === false? true : null"
       ion-button
