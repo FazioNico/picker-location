@@ -2,7 +2,9 @@
 <blockquote>Picker location </blockquote>
 
 ## Overview
-...working in proscess...
+Picker Location allows you to place GPS markers on a map to easily find them later.
+
+This multiplatform application using Google Map, Native Geolocation Cordova pluging and working with NgRx Reactive Programming.
 
 ## Get Started
 
@@ -44,6 +46,15 @@ ITEMS Endpoints
   autenticate: false
   methode: $_GET / $_POST / $_DELETE
 
+  ITEMS Endpoints
+
+  path: http://localhost:8080/categories
+  autenticate: false
+  methode: $_GET / $_POST
+
+  path: http://localhost:8080/categories/:id
+  autenticate: false
+  methode: $_GET / $_POST / $_DELETE
 
 AUTH Endpoints
 
