@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      {{(currentItem?.category?.color)? 'Edit' : 'Add New'}}  Item Location
+    </ion-title>
+    <ion-buttons end>
+        <button (click)="dismiss()" ion-button >
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form">
+    <div id="icon-camera" margin text-center>
+      <svg margin-top version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        overflow="inherit">
+          <path
+            [attr.fill]="currentItem?.category?.color || '#1998f7'"
+            [attr.d]="currentItem?.category?.coords || 'M25.015 2.4c-7.8 0-14.121 6.204-14.121 13.854 0 7.652 14.121 32.746 14.121 32.746s14.122-25.094 14.122-32.746c0-7.65-6.325-13.854-14.122-13.854z'"/>
+      </svg>
+    </div>
+
+    <ion-list margin-top>
+      <ion-item>
+        <ion-label color="primary" floating>Detail</ion-label>
+        <ion-input class="form-control" formControlName="description"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="currentItem">
+        <ion-label floating>Category</ion-label>
+        <ion-input formControlName="category" ></ion-input>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-searchbar *ngIf="!currentItem" #searchbar formControlName="category" class="form-control" [showCancelButton]="false" type="text" placeholder="Category" (ionInput)="autoComplet()"></ion-searchbar>
+    <ion-list *ngIf="isVisible && !currentItem">
+      <ion-item  *ngFor="let item of (categoriesArray | async) " (click)="toogleSearch(item)">
+        <ion-avatar item-left>
+          <svg version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            viewBox="0 0 50 50"
+            overflow="inherit">
+              <path
+                [attr.fill]="item.color"
+                [attr.d]="item.coords"/>
+          </svg>
+        </ion-avatar>
+        {{ item.title }}
+      </ion-item>
+    </ion-list>
+
+
+  </form>
+
+  <div *ngIf="!currentItem">
+    <div *ngIf="searchbar && searchbar.value.length >=1 && (categoriesArray | async).length ===0">
+
+        <p class="customLabel" padding-left>New category color</p>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4 *ngFor="let icon of icons; let i = index" >
+              <svg #svg *ngIf="i <= 5  && !isMore" (click)="choseColor(svg,icon.color)" margin-horizontal version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 50 50"
+                overflow="inherit">
+                  <path
+                    [attr.fill]="icon.color"
+                    [attr.d]="icon.coords"/>
+              </svg>
+
+              <svg #svg *ngIf="isMore" (click)="choseColor(svg, icon.color)" margin-horizontal version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 50 50"
+                overflow="inherit">
+                  <path
+                    [attr.fill]="icon.color"
+                    [attr.d]="icon.coords"/>
+              </svg>
+
+              <ion-chip
+                *ngIf="i === 6 && !isMore"
+                (click)="moreColor()"
+                margin-left
+                margin-bottom
+                margin-top
+                color="grey">
+                <ion-label>more colors</ion-label>
+              </ion-chip>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </div>
+  </div>
+
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Lat:</ion-label>
+      <ion-input disabled value="{{coords.lat}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Lng:</ion-label>
+      <ion-input disabled value="{{coords.lng}}"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div margin-horizontal margin-bottom margin-top text-center>
+    <button
+      (click)="save()"
+      [attr.disabled]="form.valid === false? true : null"
+      ion-button
+      margin-top
+      round>{{(currentItem?.category?.color)? 'Update' : 'Save'}}
+    </button>
+  </div>
+
+</ion-content>

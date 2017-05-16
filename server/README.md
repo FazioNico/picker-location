@@ -7,4 +7,4 @@
 -->
 
 # NodeJS Simple REST TS
-Simple REST NodeJS server with TypeScript for MEAN Ionic with NgRx Starter Application
+Simple REST NodeJS server with TypeScript for Picker Location Application

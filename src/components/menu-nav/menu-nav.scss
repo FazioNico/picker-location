@@ -1,0 +1,21 @@
+// @Author: Nicolas Fazio <webmaster-fazio>
+// @Date:   02-05-2017
+// @Email:  contact@nicolasfazio.ch
+// @Last modified by:   webmaster-fazio
+// @Last modified time: 14-05-2017
+
+menu-nav {
+  .list:first-child {
+    margin-top: 56px;
+  }
+  
+  .all-svg-first {
+    margin-left: -10px;
+  }
+  .all-svg, .all-svg-last {
+    margin-left: -35px;
+  }
+  .all-svg-last {
+    margin-right: -35px;
+  }
+}

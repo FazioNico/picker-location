@@ -3,7 +3,7 @@
 * @Date:   19-04-2017
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 20-04-2017
+ * @Last modified time: 07-05-2017
 */
 
 import { Injectable } from "@angular/core";
@@ -49,10 +49,22 @@ export class DatasEffects {
 
   @Effect() createAction$ = this.action$
       // Listen for the 'CREATE_DATA' action
-      .ofType(MainActions.CREATE_DATA)
+      .ofType(
+        MainActions.CREATE_DATA,
+        MainActions.CREATE_CATEGORY
+      )
       .map<Action, any>(toPayload)
       .switchMap((payload:any) => {
         return this._database.create(payload)
       })
+
+  @Effect() loadCategoriesAction$ = this.action$
+      // Listen for the 'CREATE_DATA' action
+      .ofType(MainActions.GET_CATEGORIES_ARRAY)
+      .map<Action, any>(toPayload)
+      .switchMap((payload:any) => {
+        return this._database.getCategoriesArray(payload)
+      })
+
 
 }

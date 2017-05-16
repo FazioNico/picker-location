@@ -3,7 +3,7 @@
 * @Date:   14-04-2017
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 20-04-2017
+ * @Last modified time: 16-05-2017
 */
 
 
@@ -34,7 +34,7 @@ export class AuthEffects {
 
   @Effect() checkAuthAction$ = this.action$
       // Listen for the 'CHECK_AUTH' action
-      .ofType(MainActions.CHECK_AUTH)
+      .ofType(MainActions.CHECK_AUTH, MainActions.TOKEN_SAVE_SUCCESS)
       .switchMap<Action, any>(() => this._auth.isAuth())
       .take(1)
       .map<Action, any>((_result:any) => {
@@ -79,19 +79,35 @@ export class AuthEffects {
       .switchMap((payload:Observable<any>) => {
         return this._auth.saveToken(payload)
       })
-      .flatMap<Action, any>(payload =>{
-        if(payload.type === MainActions.TOKEN_SAVE_SUCCESS){
-          return Observable.concat(
-            Observable.of(<Action>{ type: MainActions.TOKEN_SAVE_SUCCESS, payload: payload }),
-            Observable.of(<Action>{ type: MainActions.CHECK_AUTH })
-          )
-        }
-        else {
-          return Observable.concat(
-            Observable.of( <Action>{ type: MainActions.TOKEN_SAVE_FAILED }),
-            Observable.of(<Action>{ type: MainActions.CHECK_AUTH_FAILED })
-          )
-        }
-      })
+      // .flatMap<Action, any>(payload =>{
+      //   if(payload.type === MainActions.TOKEN_SAVE_SUCCESS){
+      //     return Observable.concat(
+      //       Observable.of(<Action>{ type: MainActions.TOKEN_SAVE_SUCCESS, payload: payload }),
+      //       Observable.of(<Action>{ type: MainActions.CHECK_AUTH })
+      //     )
+      //   }
+      //   else {
+      //     return Observable.concat(
+      //       Observable.of( <Action>{ type: MainActions.TOKEN_SAVE_FAILED }),
+      //       Observable.of(<Action>{ type: MainActions.CHECK_AUTH_FAILED })
+      //     )
+      //   }
+      // })
+
+
+
+      // .switchMap<Action, any>(() => this._auth.isAuth())
+      // .take(1)
+      // .map<Action, any>((_result:any) => {
+      //   if (_result.type === MainActions.CHECK_AUTH_SUCCESS) {
+      //     return <Action>{ type: MainActions.CHECK_AUTH_SUCCESS, payload: _result.payload }
+      //   } else {
+      //     return <Action>{ type: MainActions.CHECK_AUTH_NO_USER, payload: null }
+      //   }
+      // }).catch((res: any) => {
+      //   console.log('-->', res)
+      //   return Observable.of({ type: MainActions.CHECK_AUTH_FAILED, payload: res })
+      // })
+      //
 
 }

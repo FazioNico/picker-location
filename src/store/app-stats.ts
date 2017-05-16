@@ -3,7 +3,7 @@
 * @Date:   14-04-2017
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 15-04-2017
+ * @Last modified time: 07-05-2017
 */
 
 import { Action } from "@ngrx/store";
@@ -15,6 +15,8 @@ import { ILoadedState } from '../store/reducers/loadedReducer';
 import { IAuthCheckedState } from '../store/reducers/authCheckedReducer';
 import { IErrorState } from '../store/reducers/errorReducer';
 import { ICurrentUserState } from '../store/reducers/currentUserReducer';
+import { ICategoriesState } from '../store/reducers/categoriesReducer';
+
 
 export interface AppStateI {
   loading: ILoadingState,
@@ -23,7 +25,8 @@ export interface AppStateI {
   queryParams: IqueryParamsState,
   currentUser?: ICurrentUserState,
   error?: IErrorState
-  dataArray?:IDatasState
+  dataArray?:IDatasState,
+  categoriesArray?:ICategoriesState;
   dataObject?: Object
 };
 
@@ -36,5 +39,6 @@ export interface RecucerStateI {
   currentUser?: (state: ICurrentUserState, action: Action) => ICurrentUserState,
   error?: (state: IErrorState, action: Action) => IErrorState,
   dataArray?: (state: IDatasState, action: Action) => IDatasState,
+  categoriesArray?: (state: ICategoriesState, action: Action) => ICategoriesState,
   dataObject?: (state: Object, action: Action) => Object
 };

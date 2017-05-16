@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 19-04-2017
+ * @Last modified time: 02-05-2017
  */
 
  import { Action } from "@ngrx/store";
@@ -43,6 +43,14 @@
        case MainActions.CREATE_DATA_SUCCESS: {
          return Object.assign({}, state, {
            dataArray: [...state.dataArray, action.payload]
+         })
+       }
+
+       case MainActions.FILTER_DATAS_ARRAY: {
+         return Object.assign({}, state, {
+           dataArray: [...state.dataArray.filter((item: any) => {
+               return item.category === action.payload;
+           })]
          })
        }
 

@@ -3,7 +3,7 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 19-04-2017
+ * @Last modified time: 08-05-2017
  */
 
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +16,6 @@ import { Observable } from 'rxjs/Rx';
 
 import { MainActions } from '../store/actions/mainActions';
 import { AppStateI } from "../store/app-stats";
-
 
 import { HomePage } from '../pages/home/home';
 
@@ -49,13 +48,13 @@ export class MyApp implements OnInit{
         if (currentState.currentUser) {
           this.user = currentState.currentUser;
           this.app.getActiveNav().setRoot(HomePage)
-          // this.rootPage = HomePage;
-          console.log('home')
+          // this.rootPage = 'HomePage';
+          //  console.log('home')
         }
         else {
           this.app.getActiveNav().setRoot('LoginPage')
           // this.rootPage = 'LoginPage';
-          console.log('login')
+          //  console.log('login')
         }
       });
     });

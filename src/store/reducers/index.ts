@@ -3,13 +3,14 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 16-04-2017
+ * @Last modified time: 07-05-2017
  */
  import { combineReducers, ActionReducer, Action } from '@ngrx/store';
  import { compose } from '@ngrx/core/compose';
  import { storeFreeze } from 'ngrx-store-freeze';
 
  import * as fromDatas from './datasReducer';
+ import * as fromCategories from './categoriesReducer';
  import * as fromLoading from './loadingReducer';
  import * as fromLoaded from './loadedReducer';
  import * as fromQueryParams from './queryParamsReducer';
@@ -23,6 +24,7 @@
 
  const reducers:RecucerStateI = {
    dataArray: fromDatas.reducer,
+   categoriesArray: fromCategories.reducer,
    loading: fromLoading.reducer,
    loaded: fromLoaded.reducer,
    queryParams: fromQueryParams.reducer,
