@@ -114,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/store/effects/authEffects.ts:19</li>
+									<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/store/effects/authEffects.ts#L19">src/store/effects/authEffects.ts:19</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -139,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">_auth<span class="tsd-signature-symbol">:</span> <a href="_src_providers_auth_service_auth_service_.authservice.html" class="tsd-signature-type">AuthService</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/store/effects/authEffects.ts:23</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/store/effects/authEffects.ts#L23">src/store/effects/authEffects.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -149,17 +149,17 @@
 					<div class="tsd-signature tsd-kind-icon">action$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Actions</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/store/effects/authEffects.ts:22</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/store/effects/authEffects.ts#L22">src/store/effects/authEffects.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="checkauthaction_" class="tsd-anchor"></a>
 					<h3>check<wbr>Auth<wbr>Action$</h3>
-					<div class="tsd-signature tsd-kind-icon">check<wbr>Auth<wbr>Action$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;this.action$// Listen for the &#x27;CHECK_AUTH&#x27; action.ofType(MainActions.CHECK_AUTH).switchMap&lt;Action, any&gt;(() &#x3D;&gt; this._auth.isAuth()).take(1).map&lt;Action, any&gt;((_result:any) &#x3D;&gt; {if (_result.type &#x3D;&#x3D;&#x3D; MainActions.CHECK_AUTH_SUCCESS) {return &lt;Action&gt;{ type: MainActions.CHECK_AUTH_SUCCESS, payload: _result.payload }} else {return &lt;Action&gt;{ type: MainActions.CHECK_AUTH_NO_USER, payload: null }}}).catch((res: any) &#x3D;&gt; {console.log(&#x27;--&gt;&#x27;, res)return Observable.of({ type: MainActions.CHECK_AUTH_FAILED, payload: res })})</span></div>
+					<div class="tsd-signature tsd-kind-icon">check<wbr>Auth<wbr>Action$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;this.action$// Listen for the &#x27;CHECK_AUTH&#x27; action.ofType(MainActions.CHECK_AUTH, MainActions.TOKEN_SAVE_SUCCESS).switchMap&lt;Action, any&gt;(() &#x3D;&gt; this._auth.isAuth()).take(1).map&lt;Action, any&gt;((_result:any) &#x3D;&gt; {if (_result.type &#x3D;&#x3D;&#x3D; MainActions.CHECK_AUTH_SUCCESS) {return &lt;Action&gt;{ type: MainActions.CHECK_AUTH_SUCCESS, payload: _result.payload }} else {return &lt;Action&gt;{ type: MainActions.CHECK_AUTH_NO_USER, payload: null }}}).catch((res: any) &#x3D;&gt; {console.log(&#x27;--&gt;&#x27;, res)return Observable.of({ type: MainActions.CHECK_AUTH_FAILED, payload: res })})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/store/effects/authEffects.ts:35</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/store/effects/authEffects.ts#L35">src/store/effects/authEffects.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,7 +169,7 @@
 					<div class="tsd-signature tsd-kind-icon">create<wbr>User<wbr>Action$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;this.action$// Listen for the &#x27;CREATE_USER&#x27; action.ofType(MainActions.CREATE_USER).map&lt;Action, any&gt;(toPayload).switchMap((payload:Observable&lt;any&gt;) &#x3D;&gt; {console.log(&quot;in createUser$&quot;, payload)return this._auth.doCreateUser(payload)})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/store/effects/authEffects.ts:66</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/store/effects/authEffects.ts#L66">src/store/effects/authEffects.ts:66</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -179,7 +179,7 @@
 					<div class="tsd-signature tsd-kind-icon">login<wbr>Action$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;this.action$// Listen for the &#x27;LOGIN&#x27; action.ofType(MainActions.LOGIN).map&lt;Action, any&gt;(toPayload).switchMap((payload:Observable&lt;any&gt;) &#x3D;&gt; {return this._auth.doAuth(payload)})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/store/effects/authEffects.ts:27</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/store/effects/authEffects.ts#L27">src/store/effects/authEffects.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -189,17 +189,17 @@
 					<div class="tsd-signature tsd-kind-icon">logout<wbr>Action$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;this.action$// Listen for the &#x27;LOGOUT&#x27; action.ofType(MainActions.LOGOUT).switchMap&lt;Action, any&gt;(() &#x3D;&gt; this._auth.doLogout())// If successful, dispatch success action with result.flatMap&lt;Action, any&gt;(action &#x3D;&gt;{return Observable.concat(Observable.of(&lt;Action&gt;{ type: action.type }),Observable.of(&lt;Action&gt;{type: MainActions.LOGOUT_SUCCESS, payload: null }))})//.map((res: Observable&lt;any&gt;) &#x3D;&gt; ({ type: MainActions.LOGOUT_SUCCESS, payload: null }))// If request fails, dispatch failed action.catch((res: any) &#x3D;&gt; Observable.of({ type: MainActions.LOGOUT_FAILED, payload: res }))</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/store/effects/authEffects.ts:51</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/store/effects/authEffects.ts#L51">src/store/effects/authEffects.ts:51</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="usersuccessaction_" class="tsd-anchor"></a>
 					<h3>user<wbr>Success<wbr>Action$</h3>
-					<div class="tsd-signature tsd-kind-icon">user<wbr>Success<wbr>Action$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;this.action$// Listen for the &#x27;LOGIN_SUCCESS &amp; CREATE_USER_SUCCESS&#x27; action.ofType(MainActions.CREATE_USER_SUCCESS, MainActions.LOGIN_SUCCESS).map&lt;Action, any&gt;(toPayload).switchMap((payload:Observable&lt;any&gt;) &#x3D;&gt; {return this._auth.saveToken(payload)}).flatMap&lt;Action, any&gt;(payload &#x3D;&gt;{if(payload.type &#x3D;&#x3D;&#x3D; MainActions.TOKEN_SAVE_SUCCESS){return Observable.concat(Observable.of(&lt;Action&gt;{ type: MainActions.TOKEN_SAVE_SUCCESS, payload: payload }),Observable.of(&lt;Action&gt;{ type: MainActions.CHECK_AUTH }))}else {return Observable.concat(Observable.of( &lt;Action&gt;{ type: MainActions.TOKEN_SAVE_FAILED }),Observable.of(&lt;Action&gt;{ type: MainActions.CHECK_AUTH_FAILED }))}})</span></div>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Success<wbr>Action$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;this.action$// Listen for the &#x27;LOGIN_SUCCESS &amp; CREATE_USER_SUCCESS&#x27; action.ofType(MainActions.CREATE_USER_SUCCESS, MainActions.LOGIN_SUCCESS).map&lt;Action, any&gt;(toPayload).switchMap((payload:Observable&lt;any&gt;) &#x3D;&gt; {return this._auth.saveToken(payload)})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/store/effects/authEffects.ts:75</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/store/effects/authEffects.ts#L75">src/store/effects/authEffects.ts:75</a></li>
 						</ul>
 					</aside>
 				</section>

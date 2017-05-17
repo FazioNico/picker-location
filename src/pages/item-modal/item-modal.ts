@@ -3,7 +3,7 @@
  * @Date:   03-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 16-05-2017
+ * @Last modified time: 17-05-2017
  */
 
 import { Component, ViewChild } from '@angular/core';
@@ -77,7 +77,7 @@ export class ItemModal{
 
       this.form = fb.group({
           description: [this.currentItem.description, Validators.compose([Validators.minLength(2), Validators.required])],
-          category: [this.currentItem.category.title, Validators.required],
+          category: [(this.currentItem.category)?this.currentItem.category.title || 'Marker' : 'Marker', Validators.required],
         });
       this.form.controls.category.disable()
       // this.searchbar._value = this.currentItem.category.tilte
@@ -177,6 +177,12 @@ export class ItemModal{
     // back to home page
     // console.log(this.form)
     if(this.form.valid) this.dismiss();
+  }
+
+  delete():void{
+    console.log('delete-> ',this.currentItem)
+    this.store.dispatch(<Action>this.mainActions.delete_data( { path: '/items', params: this.currentItem} ));
+    this.dismiss();
   }
 
   dismiss():void {
