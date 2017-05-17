@@ -114,7 +114,15 @@
     </ion-item>
   </ion-list>
 
-  <div margin-horizontal margin-bottom margin-top text-center>
+  <div margin-horizontal margin-top margin-bottom text-center>
+    <button
+      *ngIf="currentItem"
+      (click)="delete()"
+      ion-button
+      margin-top
+      round
+      color="danger">Delete
+    </button>
     <button
       (click)="save()"
       [attr.disabled]="form.valid === false? true : null"
@@ -123,5 +131,6 @@
       round>{{(currentItem?.category?.color)? 'Update' : 'Save'}}
     </button>
   </div>
+
 
 </ion-content>
