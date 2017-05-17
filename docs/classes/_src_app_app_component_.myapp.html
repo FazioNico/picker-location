@@ -97,6 +97,8 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_app_component_.myapp.html#app" class="tsd-kind-icon">app</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_app_component_.myapp.html#loader" class="tsd-kind-icon">loader</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_app_app_component_.myapp.html#loadingctrl" class="tsd-kind-icon">loading<wbr>Ctrl</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_app_app_component_.myapp.html#mainactions" class="tsd-kind-icon">main<wbr>Actions</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_app_component_.myapp.html#rootpage" class="tsd-kind-icon">root<wbr>Page</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_app_app_component_.myapp.html#store" class="tsd-kind-icon">store</a></li>
@@ -108,6 +110,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_app_component_.myapp.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_app_component_.myapp.html#presentloading" class="tsd-kind-icon">present<wbr>Loading</a></li>
 							</ul>
 						</section>
 					</div>
@@ -119,13 +122,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>MyApp<span class="tsd-signature-symbol">(</span>platform<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Platform</span>, statusBar<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">StatusBar</span>, splashScreen<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SplashScreen</span>, store<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Store</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>, mainActions<span class="tsd-signature-symbol">: </span><a href="_src_store_actions_mainactions_.mainactions.html" class="tsd-signature-type">MainActions</a>, app<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">App</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_app_app_component_.myapp.html" class="tsd-signature-type">MyApp</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>MyApp<span class="tsd-signature-symbol">(</span>platform<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Platform</span>, statusBar<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">StatusBar</span>, splashScreen<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SplashScreen</span>, store<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Store</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>, mainActions<span class="tsd-signature-symbol">: </span><a href="_src_store_actions_mainactions_.mainactions.html" class="tsd-signature-type">MainActions</a>, app<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">App</span>, loadingCtrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">LoadingController</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_app_app_component_.myapp.html" class="tsd-signature-type">MyApp</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/app/app.component.ts:29</li>
+									<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L30">src/app/app.component.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -148,6 +151,9 @@
 								<li>
 									<h5>app: <span class="tsd-signature-type">App</span></h5>
 								</li>
+								<li>
+									<h5>loadingCtrl: <span class="tsd-signature-type">LoadingController</span></h5>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_src_app_app_component_.myapp.html" class="tsd-signature-type">MyApp</a></h4>
 						</li>
@@ -162,7 +168,27 @@
 					<div class="tsd-signature tsd-kind-icon">app<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">App</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/app/app.component.ts:37</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L38">src/app/app.component.ts:38</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="loader" class="tsd-anchor"></a>
+					<h3>loader</h3>
+					<div class="tsd-signature tsd-kind-icon">loader<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Loading</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L29">src/app/app.component.ts:29</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="loadingctrl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> loading<wbr>Ctrl</h3>
+					<div class="tsd-signature tsd-kind-icon">loading<wbr>Ctrl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">LoadingController</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L39">src/app/app.component.ts:39</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -172,7 +198,7 @@
 					<div class="tsd-signature tsd-kind-icon">main<wbr>Actions<span class="tsd-signature-symbol">:</span> <a href="_src_store_actions_mainactions_.mainactions.html" class="tsd-signature-type">MainActions</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/app/app.component.ts:36</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L37">src/app/app.component.ts:37</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -182,7 +208,7 @@
 					<div class="tsd-signature tsd-kind-icon">root<wbr>Page<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/app/app.component.ts:28</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L28">src/app/app.component.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -192,7 +218,7 @@
 					<div class="tsd-signature tsd-kind-icon">store<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Store</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/app/app.component.ts:35</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L36">src/app/app.component.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -202,7 +228,7 @@
 					<div class="tsd-signature tsd-kind-icon">store<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_store_app_stats_.appstatei.html" class="tsd-signature-type">AppStateI</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/app/app.component.ts:29</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L30">src/app/app.component.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -212,7 +238,7 @@
 					<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/app/app.component.ts:27</li>
+							<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L27">src/app/app.component.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -229,7 +255,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/app/app.component.ts:63</li>
+									<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L66">src/app/app.component.ts:66</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="presentloading" class="tsd-anchor"></a>
+					<h3>present<wbr>Loading</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">present<wbr>Loading<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/FazioNico/picker-location/blob/36185dc/src/app/app.component.ts#L72">src/app/app.component.ts:72</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -262,6 +305,12 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_src_app_app_component_.myapp.html#app" class="tsd-kind-icon">app</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_src_app_app_component_.myapp.html#loader" class="tsd-kind-icon">loader</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_src_app_app_component_.myapp.html#loadingctrl" class="tsd-kind-icon">loading<wbr>Ctrl</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_src_app_app_component_.myapp.html#mainactions" class="tsd-kind-icon">main<wbr>Actions</a>
 							</li>
@@ -279,6 +328,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_src_app_app_component_.myapp.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_src_app_app_component_.myapp.html#presentloading" class="tsd-kind-icon">present<wbr>Loading</a>
 							</li>
 						</ul>
 					</li>
