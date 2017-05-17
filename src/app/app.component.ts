@@ -3,11 +3,11 @@
  * @Date:   14-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 08-05-2017
+ * @Last modified time: 17-05-2017
  */
 
 import { Component, OnInit } from '@angular/core';
-import { Platform, App } from 'ionic-angular';
+import { Platform, App, Loading, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -26,6 +26,7 @@ export class MyApp implements OnInit{
 
   user:any;
   rootPage:any;
+  loader:Loading;
   public storeInfo:Observable<AppStateI>;
 
   constructor(
@@ -34,7 +35,8 @@ export class MyApp implements OnInit{
     splashScreen: SplashScreen,
     private store: Store<any>,
     private mainActions: MainActions,
-    public app: App
+    public app: App,
+    private loadingCtrl:LoadingController
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -45,15 +47,16 @@ export class MyApp implements OnInit{
       this.storeInfo = this.store.select((state:AppStateI) => state.currentUser)
       // here we are monitoring the authstate
       this.storeInfo.subscribe((currentState: any) => {
+        //this.loader.dismiss()
         if (currentState.currentUser) {
           this.user = currentState.currentUser;
-          this.app.getActiveNav().setRoot(HomePage)
-          // this.rootPage = 'HomePage';
+          // this.app.getActiveNav().setRoot(HomePage)
+          this.rootPage = HomePage;
           //  console.log('home')
         }
         else {
-          this.app.getActiveNav().setRoot('LoginPage')
-          // this.rootPage = 'LoginPage';
+          // this.app.getActiveNav().setRoot('LoginPage')
+          this.rootPage = 'LoginPage';
           //  console.log('login')
         }
       });
@@ -61,7 +64,16 @@ export class MyApp implements OnInit{
   }
 
   ngOnInit() {
-    this.rootPage = 'LoginPage';
+    this.presentLoading();
+    // this.rootPage = 'LoginPage';
     this.store.dispatch(this.mainActions.checkAuth());
+  }
+
+  presentLoading(){
+    this.loader = this.loadingCtrl.create({
+      content: "Authenticating...",
+      dismissOnPageChange: true
+    });
+    this.loader.present();
   }
 }

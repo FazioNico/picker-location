@@ -3,7 +3,7 @@
  * @Date:   10-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 16-05-2017
+ * @Last modified time: 17-05-2017
  */
 
 import { Component, ViewChild, EventEmitter, Output } from '@angular/core';
@@ -31,20 +31,31 @@ export class SearchBarComponent {
    */
   focus(e:any):void{
     let el:any  = e.target;
-    console.log('check->', [...el.classList[0]])
-    //return ;
-    if([...el.classList[0]].indexOf('button-inner') >-1){
-        //this.searchbar._searchbarInput.nativeElement.blur()
-        this.closeSearch(e)
-        return
-    }
-    if([...el.classList[0]].indexOf('searchbar-search-icon') >-1){
-        this.openSearch()
-        return
-    }
-    if([...el.classList[0]].indexOf('searchbar-input') <= -1){
+    // console.log('test-> ', this.searchbar.getElementRef().nativeElement.classList.contains('focus'))
+    if(!this.searchbar.getElementRef().nativeElement.classList.contains('focus')){
+      //console.log('focused->', el)
+      this.openSearch()
       return
     }
+    //console.log('already focused', el)
+    if(el.classList.contains('button-inner')){
+      console.log('unfocused', el)
+      this.closeSearch(e)
+    }
+    return
+    //return ;
+    // if([...el.classList[0]].indexOf('button-inner') >-1){
+    //     //this.searchbar._searchbarInput.nativeElement.blur()
+    //     this.closeSearch(e)
+    //     return
+    // }
+    // if([...el.classList[0]].indexOf('searchbar-search-icon') >-1){
+    //     this.openSearch()
+    //     return
+    // }
+    // if([...el.classList[0]].indexOf('searchbar-input') <= -1){
+    //   this.openSearch()
+    // }
 
     // if(!el.value){
     //   this.openSearch()
@@ -52,11 +63,14 @@ export class SearchBarComponent {
   }
 
   openSearch():void{
-    //console.log('openSearch transform')
+    console.log('openSearch transform', this.searchbar.getElementRef())
+    console.log('openSearch transform', this.searchbar)
     let input:Element = this.searchbar._searchbarInput.nativeElement;
     this.searchbar.getElementRef().nativeElement.firstChild.classList.add('focus')
+    //this.searchbar.getElementRef().nativeElement.firstChild.setAttribute( "class", "focus" )
     this.searchbar.setElementClass('focus', true)
     input.classList.add('focus')
+    // input.setAttribute( "class", "focus" )
   }
 
   closeSearch(e:any):void{
