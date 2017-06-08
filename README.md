@@ -1,21 +1,25 @@
-#  Picker Location
+
+#  <img src="https://raw.githubusercontent.com/FazioNico/picker-location/master/resources/icon.png" width="64" height="64px" style="border-radius:15px"> Picker Location
+
 
 ## Overview
 Picker Location allows you to place GPS markers on a map to easily find them later.
 
 This multiplatform application using Google Map, Native Geolocation Cordova pluging and working with NgRx Reactive Programming.
 
-## Get Started
+<b>Available on AppleStore as:</b>  Picker Location
 
-### Installation
+### Informations for developper:
+
+#### Installation
 - `$ nvm use 7`
 - `$ npm install`
 
-### Start
+#### Start
 - `$ npm run start:dev` to start in dev mode
 - `$ npm run start:prod` to start in prod mode (you have to config your production environments variable)
 
-### Build
+#### Build
 First add selected platform: `$ ionic platform add browser|ios|android` (one by one). Then you can build each platform with ionic CLI `$ ionic build browser|ios|android --prod`
 
 And we have the following npm run script ready to use:
@@ -24,16 +28,16 @@ And we have the following npm run script ready to use:
 
 If you want, you can add your own build run script.
 
-### Deploy
+#### Deploy
 - `$ npm run deploy:server` to deploy server side on heroku
 - `$ npm run deploy:client` to deploy client side on GitHub gh-pages
 
-### Documentations
+#### Documentations
 - `$ npm run docs`
 
 open `./docs/index.html` to read documentation
 
-## Server REST API Endpoints
+### Server REST API Endpoints
 ````
 ITEMS Endpoints
 
@@ -83,7 +87,7 @@ USERS Endpoints
 
 ````
 
-## Documentation
+### Documentation
 App Documentations is generate by typeDoc. Use the following cmd to generate documentation
 - `$ npm run docs` will generate Angular Application documentation and open the index doc in browser.
 
